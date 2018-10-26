@@ -21,8 +21,8 @@ shell:
 #  - LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
 #  - apt-get update
 #  - apt-get install -y php7.2 php-sqlite3 php-xml php-zip php-mbstring php-intl
-#  - curl -LsS https://getcomposer.org/download/1.4.1/composer.phar -o /usr/local/bin/composer
-#  - chmod a+x /usr/local/bin/composer
+  - curl -LsS https://getcomposer.org/download/1.4.1/composer.phar -o /usr/local/bin/composer
+  - chmod a+x /usr/local/bin/composer
   install:
 #  - cd /app
 #  - su -c 'composer install' app

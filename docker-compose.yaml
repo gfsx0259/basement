@@ -2,9 +2,9 @@ version: '3'
 services:
   php:
     container_name: php-basement
-    image: 'localhost:5000/symfony-demo7/php'
+    image: 'localhost:5000/basement/php:master'
   nginx:
     container_name: nginx-basement
-    image: 'localhost:5000/symfony-demo7/nginx'
+    image: 'localhost:5000/basement/nginx:master'
     ports:
     - "8080:80"
