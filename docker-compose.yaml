@@ -2,15 +2,9 @@ version: '3'
 services:
   php:
     container_name: php-basement
-    build: build/php
-    volumes:
-    - ./:/var/www/
+    image: 'localhost:5000/symfony-demo6/php'
   nginx:
     container_name: nginx-basement
-    build: build/nginx
+    image: 'localhost:5000/symfony-demo6/nginx'
     ports:
     - "8080:80"
-    volumes:
-    - ./:/var/www/
-    links:
-    - php
