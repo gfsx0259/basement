@@ -12,8 +12,8 @@ git:
 #  owner: app
 shell:
   beforeInstall:
-#  - apt-get update
-#  - apt-get install -y locales ca-certificates curl software-properties-common
+  - apt-get update
+  - apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev curl
 #  - locale-gen en_US.UTF-8
 #  - groupadd -g 242 app
 #  - useradd -m -d /app -g 242 -u 242 -s /bin/bash app
