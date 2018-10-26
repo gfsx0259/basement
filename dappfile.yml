@@ -24,8 +24,8 @@ shell:
   - curl -LsS https://getcomposer.org/download/1.4.1/composer.phar -o /usr/local/bin/composer
   - chmod a+x /usr/local/bin/composer
   install:
-#  - cd /app
-#  - su -c 'composer install' app
+  - cd /app
+  - su -c 'composer install' app
   setup:
 #  - "echo '#!/bin/bash' >> /app/start.sh"
 #  - echo 'php bin/console server:run 0.0.0.0:8000' >> /app/start.sh
