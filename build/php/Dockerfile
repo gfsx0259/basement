@@ -6,6 +6,7 @@ RUN apt-get install -y \
 
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
+        freetype-dev \
         libjpeg62-turbo-dev \
         libpng12-dev \
         libxpm-dev \
@@ -13,10 +14,10 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install -j$(nproc) iconv mcrypt \
     && docker-php-ext-configure gd \
     --enable-gd-native-ttf \
-    --with-freetype-dir=/usr/lib/x86_64-linux-gnu/ \
-    --with-jpeg-dir=/usr/lib/x86_64-linux-gnu/ \
-    --with-xpm-dir=/usr/lib/x86_64-linux-gnu/ \
-    --with-vpx-dir=/usr/lib/x86_64-linux-gnu/ \
+    --with-freetype-dir=/usr/include/ \
+    --with-jpeg-dir=/usr/include/ \
+    --with-xpm-dir=/usr/include/ \
+    --with-vpx-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install -j$(nproc) mbstring \
     && docker-php-ext-enable gd
