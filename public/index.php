@@ -2,6 +2,8 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
+echo phpinfo();
+
 use LasseRafn\InitialAvatarGenerator\InitialAvatar;
 
 $avatar = new InitialAvatar();

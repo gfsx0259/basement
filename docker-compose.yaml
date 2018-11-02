@@ -3,6 +3,8 @@ services:
   php:
     container_name: php-basement
     image: 'localhost:5000/basement/php:master'
+    volumes:
+    - "./:/app"
   nginx:
     container_name: nginx-basement
     image: 'localhost:5000/basement/nginx:master'
