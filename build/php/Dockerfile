@@ -14,15 +14,15 @@ RUN apt-get install -y \
         && docker-php-ext-configure zip --enable-zip
 
 # install GD
-RUN apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev && \
-  docker-php-ext-configure gd \
-    --with-gd \
+RUN apt-get update && apt-get install -y \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libpng12-dev \
+    && docker-php-ext-configure gd \
     --with-freetype-dir=/usr/include/ \
-    --with-png-dir=/usr/include/ \
-    --with-jpeg-dir=/usr/include/ && \
-  NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) && \
-  docker-php-ext-install -j${NPROC} gd && \
-  apk del --no-cache freetype-dev libpng-dev libjpeg-turbo-dev
+    --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-install gd \
+    && docker-php-ext-enable gd
 
 
 # install xdebug

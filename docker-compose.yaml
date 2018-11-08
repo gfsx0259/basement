@@ -8,5 +8,7 @@ services:
   nginx:
     container_name: nginx-basement
     image: 'localhost:5000/basement/nginx:master'
+    volumes:
+    - "./:/app"
     ports:
     - "8080:80"

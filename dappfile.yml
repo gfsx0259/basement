@@ -9,18 +9,13 @@ docker:
 git:
 - add: /
   to: /app
-#  owner: app
+  owner: appuser
 shell:
   beforeInstall:
-# example https://github.com/prooph/docker-files/blob/master/php/7.2-fpm
-  - apk add freetype libpng libjpeg-turbo
-  - apk add --no-cache --virtual .build-deps freetype-dev libpng-dev libjpeg-turbo-dev
-  - docker-php-ext-configure gd --with-gd --with-png-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+  - addgroup -S appgroup && adduser -S appuser -G appgroup
+  - apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev
+  - docker-php-ext-configure gd --with-gd --with-freetype-dir=/usr/include/ --with-png-dir=/usr/include/ --with-jpeg-dir=/usr/include/
   - docker-php-ext-install -j$(nproc) gd
-#  - locale-gen en_US.UTF-8
-#  - groupadd -g 242 app
-#  - useradd -m -d /app -g 242 -u 242 -s /bin/bash app
-#  # https://askubuntu.com/posts/490910/revisions
 #  - LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
 #  - apt-get update
 #  - apt-get install -y php7.2 php-sqlite3 php-xml php-zip php-mbstring php-intl
