@@ -1,2 +1,4 @@
 /vendor
 /public/images
+
+/.dappfile.render.yaml
