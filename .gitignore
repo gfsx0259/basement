@@ -2,3 +2,5 @@
 /public/images
 
 /.dappfile.render.yaml
+
+/k8s/templates/secrets.yaml

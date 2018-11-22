@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: basement-ingress
+  labels:
+    app: basement
+spec:
+  backend:
+      serviceName: default-http-backend
+      servicePort: 80
+  rules:
+    - host: "basement.app"
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: basement
+              servicePort: 80

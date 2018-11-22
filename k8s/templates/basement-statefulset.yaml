@@ -9,29 +9,31 @@ spec:
       labels:
         app: basement
     spec:
+      imagePullSecrets:
+      - name: registry
       containers:
         # nginx
         - name: nginx-basement
-          image: localhost:5000/basement/nginx:master
-          imagePullPolicy: IfNotPresent
+          image: reg.bigln.ru/basement/nginx:master
+          imagePullPolicy: Always
           ports:
           - containerPort: 80
           volumeMounts:
-          - mountPath: /app
+          - mountPath: /app/public/images
             name: basement-vol
         # php-fpm
         - name: php-basement
-          image: localhost:5000/basement/php:master
-          imagePullPolicy: IfNotPresent
+          image: reg.bigln.ru/basement/php:master
+          imagePullPolicy: Always
           volumeMounts:
-          - mountPath: /app
+          - mountPath: /app/public/images
             name: basement-vol
       restartPolicy: Always
   volumeClaimTemplates:
     - metadata:
         name: basement-vol
         annotations:
-          volume.beta.kubernetes.io/storage-class: "rbd"
+          volume.beta.kubernetes.io/storage-class: "standard"
       spec:
         accessModes: [ "ReadWriteOnce" ]
         resources:
@@ -44,8 +46,8 @@ metadata:
   name: basement
 spec:
   ports:
-  - name: "8080"
-    port: 8080
+  - port: 80
+    protocol: TCP
     targetPort: 80
   selector:
     app: basement
